@@ -92,7 +92,9 @@ public class HystrixCommandBuilderFactory {
 
     private String createThreadPoolKey(MetaHolder metaHolder) {
         // this key is created without default value because intrinsically Hystrix knows how to derive this key properly if it's absent
-        return metaHolder.getHystrixCommand().threadPoolKey();
+        //return metaHolder.getHystrixCommand().threadPoolKey();
+        // CHANGED to use command key as default
+        return createKey(metaHolder.getHystrixCommand().threadPoolKey(), createCommandKey(metaHolder));
     }
 
     private String createCommandKey(MetaHolder metaHolder) {

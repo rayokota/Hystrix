@@ -28,7 +28,9 @@ public final class EnvUtils {
     }
 
     public static WeavingMode getWeavingMode() {
-        String wavingModeParam = System.getProperty("weavingMode", WeavingMode.RUNTIME.name()).toUpperCase();
+        //String wavingModeParam = System.getProperty("weavingMode", WeavingMode.RUNTIME.name()).toUpperCase();
+        // CHANGED to use COMPILE as default
+        String wavingModeParam = System.getProperty("weavingMode", WeavingMode.COMPILE.name()).toUpperCase();
         WeavingMode weavingMode = WeavingMode.valueOf(wavingModeParam);
         if (weavingMode == null)
             throw new IllegalArgumentException("wrong 'weavingMode' property, supported: " + Arrays.toString(WeavingMode.values()) + ", actual = " + wavingModeParam);
